@@ -56,7 +56,12 @@ public class NmsItemStackCreate17R4P extends NmsItemStackCreate
 	
 	public static Class<?> getClassCraftItemStack() throws ClassNotFoundException
 	{
-		return PackageType.MINECRAFT_SERVER.getClass("ItemStack");
+		try {
+			Class.forName("thermos.Thermos");
+			return PackageType.MINECRAFT_ITEM.getClass("ItemStack");
+		} catch (ClassNotFoundException e) {
+			return PackageType.MINECRAFT_SERVER.getClass("ItemStack");
+		}
 	}
 	
 	public static Class<?> getClassCraftItemStackCatch()
